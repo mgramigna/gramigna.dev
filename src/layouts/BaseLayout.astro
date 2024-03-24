@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
+import ThemeIcon from "../components/ThemeIcon.astro";
 
 const { title, description } = Astro.props;
 ---
@@ -11,8 +12,13 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body>
-    <main class="max-w-screen-sm mx-auto sm:px-0 px-4 mb-8 flex-1">
+  <body class="dark:bg-slate-950 bg-slate-50">
+    <main
+      class="max-w-screen-sm mx-auto sm:px-0 px-4 mb-8 flex-1 text-gray-900 dark:text-gray-50"
+    >
+      <div class="flex pt-2 justify-end">
+        <ThemeIcon />
+      </div>
       <slot />
     </main>
     <Footer />
