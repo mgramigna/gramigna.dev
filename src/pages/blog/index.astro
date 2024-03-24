@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Link from "../../components/Link.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+const mostRecentPost = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .at(0);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="pt-8 mb-12 flex justify-center gap-8">
+    <Link href="/">Home</Link>
+    <Link href="/blog">Blog</Link>
+    <Link href="/blog/posts">All Posts</Link>
+  </div>
+  <h1 class="text-center mt-12 text-4xl">MG's Blog</h1>
+  <p class="mt-12 text-lg">
+    I build a lot of things. This is how I show people how I did it (and how I
+    don't forget how I did it). There's truly no better way to learn something
+    than to try and teach it to someone else!
+  </p>
+  <h2 class="text-center my-12 text-3xl">Most Recent Post</h2>
+  {
+    mostRecentPost && (
+      <Link class="no-underline" href={`/blog/${mostRecentPost.slug}/`}>
+        <div class="flex items-center gap-4">
+          <h3 class="text-2xl">{mostRecentPost.data.title} </h3>
+          <span class="text-base text-gray-400 italic">
+            <FormattedDate date={mostRecentPost.data.pubDate} />
+          </span>
+        </div>
+        <p class="text-gray-500">{mostRecentPost.data.description}</p>
+      </Link>
+    )
+  }
+</BaseLayout>

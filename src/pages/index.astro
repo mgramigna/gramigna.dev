@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import Link from "../components/Link.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div
+    class="flex sm:justify-between justify-center flex-wrap gap-8 items-center pt-24"
+  >
+    <div class="text-center sm:text-left">
+      <h1 class="text-4xl">Matt Gramigna</h1>
+      <p class="text-2xl text-gray-400">Software Engineer</p>
+    </div>
+    <Image
+      class="rounded-full"
+      src="/me.jpg"
+      alt="Me"
+      width="300"
+      height="300"
+    />
+  </div>
+  <div class="my-12 flex justify-center gap-8">
+    <Link href="https://github.com/mgramigna" target="_blank">GitHub</Link>
+    <Link href="blog">Blog</Link>
+    <Link target="_blank" href="https://linkedin.com/in/mgramigna"
+      >LinkedIn</Link
+    >
+  </div>
+  <div class="flex flex-col gap-4 text-lg">
+    <p>
+      Hi! I'm Matt. I'm a full-stack software developer at <Link
+        href="https://patinahealth.com/">Patina Health</Link
+      >, building the future of primary care for older adults. I'm also
+      currently building <Link
+        href="https://www.survivorsurvivorleague.app/"
+        class="underline"
+        target="_blank">Survivor Survivor League</Link
+      > to game-ify the best television show in town!
+    </p>
+    <p>
+      When I'm not working or building my next side project, I'm either on a
+      run, at the movies, or sinking myself into a strategy game (current
+      obsessions are <Link
+        class="underline"
+        href="https://store.steampowered.com/app/646570/Slay_the_Spire/"
+        target="_blank">Slay the Spire</Link
+      > and <Link href="https://bloodontheclocktower.com/" target="_blank"
+        >Blood on the Clocktower</Link
+      >
+      ).
+    </p>
+  </div>
+</BaseLayout>
