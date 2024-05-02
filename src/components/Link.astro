@@ -8,7 +8,10 @@ const { href, class: className, ...props } = Astro.props;
 
 <a
   href={href}
-  class:list={[className, "underline decoration-2 decoration-emerald-500"]}
+  class:list={[
+    className,
+    "underline decoration-2 decoration-emerald-500 hover:decoration-4 hover:text-emerald-500",
+  ]}
   {...props}
 >
   <slot />
