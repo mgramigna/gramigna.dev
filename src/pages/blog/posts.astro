@@ -10,7 +10,7 @@ const allPosts = (await getCollection("blog")).sort(
 );
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<BaseLayout title={`${SITE_TITLE} | Blog`} description={SITE_DESCRIPTION}>
   <div class="pt-8 mb-12 flex justify-center gap-8">
     <Link href="/">Home</Link>
     <Link href="/blog">Blog</Link>
